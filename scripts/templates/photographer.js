@@ -21,6 +21,10 @@ function photographerTemplate(data) {
         pgPrice.classList.add("price");
         h3.textContent = country+", "+city;
         h3.classList.add("countryCity");
+        article.classList.add("tabclas");
+        console.log(article.ariaSelected); // true
+        article.ariaSelected = "false";
+        console.log(article.ariaSelected); // false
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
