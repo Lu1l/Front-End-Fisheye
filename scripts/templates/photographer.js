@@ -7,7 +7,8 @@ function photographerTemplate(data) {
         
         const article = document.createElement( 'article' );
         article.addEventListener('click', function() { 
-            alert('Erreur');
+            //alert('Erreur');
+            RedirectionJavascript();
           }, false);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
@@ -21,10 +22,12 @@ function photographerTemplate(data) {
         pgPrice.classList.add("price");
         h3.textContent = country+", "+city;
         h3.classList.add("countryCity");
+
         article.classList.add("tabclas");
         console.log(article.ariaSelected); // true
-        article.ariaSelected = "false";
+        article.ariaSelected = "true";
         console.log(article.ariaSelected); // false
+
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
@@ -34,14 +37,11 @@ function photographerTemplate(data) {
 
         function RedirectionJavascript(){
 
-            document.location.href= "http://photographer.html";
+            document.location.href= "photographer.html?id="+id;
             
             }
     }
-
-   
-
-
-    
     return {getUserCardDOM}
+
+
 }
