@@ -22,6 +22,7 @@ function photographerTemplate(data) {
         pgPrice.classList.add("price");
         h3.textContent = country+", "+city;
         h3.classList.add("countryCity");
+
         article.classList.add("tabclas");
         console.log(article.ariaSelected); // true
         // article.setAttribute("aria-quelquechose", "nanani")
@@ -35,10 +36,6 @@ function photographerTemplate(data) {
         article.appendChild(pgPrice);
         return (article);
 
-
-        //
-
-        data.id
         function RedirectionJavascript(){
 
             document.location.href= "photographer.html?id="+id;
