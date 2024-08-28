@@ -1,6 +1,7 @@
+
+
 let photographers
 let UnSeulPhotographeMedias
-
 
 async function getPhotographers() {
     // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
@@ -27,15 +28,16 @@ async function getPhotographers() {
     
   }
   
-  async function displayData(photographers) {
+  async function displayData(photographer) {
     const singlephotographersSection = document.querySelector(".photographer_card");
-
-    photographers.forEach((photographer) => {
+ 
       const photographerModel = singlephotographerTemplate(photographer);
+      console.log(photographerModel)
       const singleuserCardDOM = photographerModel.getSingleUserCardDOM();
+      
       singlephotographersSection.appendChild(singleuserCardDOM);
-      console.log(singleuserCardDOM)
-    });
+      
+    
   }
  
   
@@ -43,8 +45,10 @@ async function getPhotographers() {
     // Récupère les datas des photographes
      photographers  = await getPhotographers();
     var parameter = location.search.split('=');
-    getPhotographersByid(parameter[1]);
-    displayData(photographers);
+    console.log(typeof Number(parameter[1]))
+    let singlePhotographer = await getPhotographersByid(Number(parameter[1]));
+  
+    await displayData(singlePhotographer);
   }
   
   init();
