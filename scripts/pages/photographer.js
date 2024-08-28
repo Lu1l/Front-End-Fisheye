@@ -1,5 +1,6 @@
-let  photographers
+let photographers
 let UnSeulPhotographeMedias
+
 
 async function getPhotographers() {
     // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
@@ -7,7 +8,7 @@ async function getPhotographers() {
     const response = await fetch('../data/photographers.json');
   
     let json = await response.json();    
-    
+    // console.log(json);
   
     // et bien retourner le tableau photographers seulement une fois récupéré
     return json;
@@ -16,19 +17,34 @@ async function getPhotographers() {
 
   // id = 7
   async function getPhotographersByid(ident) { 
-    
+    photographers = await getPhotographers(); // Toutes les infos des photographes
+   // console.log(photographers); // Toutes les infos des photographes
     const UnSeulPhotographe = photographers.photographers.find(photographer => photographer.id == ident); //filter, map ou find
     console.log(UnSeulPhotographe);
     const UnSeulPhotographeMedias = photographers.media.filter(media => media.photographerId == ident); 
     console.log(UnSeulPhotographeMedias);
-       
+    
+    
   }
-   
+  
+  async function displayData(photographers) {
+    const singlephotographersSection = document.querySelector(".photographer_card");
+
+    photographers.forEach((photographer) => {
+      const photographerModel = singlephotographerTemplate(photographer);
+      const singleuserCardDOM = photographerModel.getSingleUserCardDOM();
+      singlephotographersSection.appendChild(singleuserCardDOM);
+      console.log(singleuserCardDOM)
+    });
+  }
+ 
+  
   async function init() {
     // Récupère les datas des photographes
-    photographers = await getPhotographers();
+     photographers  = await getPhotographers();
     var parameter = location.search.split('=');
     getPhotographersByid(parameter[1]);
+    displayData(photographers);
   }
   
   init();
