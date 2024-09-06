@@ -1,10 +1,9 @@
-function photographerTemplate(data) {
+function mediaTemplate(data) {
     const { name, portrait, price, country , city,tagline,id } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        
         const article = document.createElement( 'article' );
         article.addEventListener('click', function() { 
             //alert('Erreur');
@@ -38,7 +37,7 @@ function photographerTemplate(data) {
 
         function RedirectionJavascript(){
 
-            document.location.href= "photographer.html?id="+id;
+          //  document.location.href= "photographer.html?id="+id;
             
             }
     }

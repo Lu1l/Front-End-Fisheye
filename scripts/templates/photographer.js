@@ -11,7 +11,7 @@ function photographerTemplate(data) {
             RedirectionJavascript();
           }, false);
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement( 'h3' );
         const pgTagline = document.createElement( 'p' );   
