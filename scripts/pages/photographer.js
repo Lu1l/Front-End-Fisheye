@@ -23,24 +23,31 @@ async function getPhotographers() {
     const UnSeulPhotographeMedias = photographers.media.filter(media => media.photographerId == ident); 
     console.log(UnSeulPhotographeMedias)
     console.log(UnSeulPhotographe)
-    return UnSeulPhotographe;
+    //return UnSeulPhotographe;
+    return [UnSeulPhotographe, UnSeulPhotographeMedias]
+    /*= return {UnSeulPhotographe, UnSeulPhotographeMedias} Objet*/
   }
-  
-  async function displayData(photographer) {
+
+
+  async function displayData(photographer, medias) {
    // console.log(photographer);
-      const singlephotographersSection = document.querySelector(".container");
-      const photographerModel =  singlephotographerTemplate(photographer);
+   const singlephotographersSection = document.querySelector(".container"); 
+
+   const photographerModel =  singlephotographerTemplate(photographer);
       //console.log(photographerModel)
       const singleuserCardDOM = photographerModel.getSingleUserCardDOM();
       //console.log(singlephotographersSection)
       singlephotographersSection.appendChild(singleuserCardDOM);
-
-      /*const mediaSection = document.querySelector(".photograper_media");
-      const mediaModel =  mediaTemplate(photographer);
-      //console.log(photographerModel)
-      const singleuserCardDOM = photographerModel.getSingleUserCardDOM();
-      //console.log(mediaSection)
-      mediaSection.appendChild(singleuserCardDOM);*/
+      for (let i in medias){
+        //dans cette boucle,call media model + mediacardom + mediasection.appendChild
+        const mediaSection = document.querySelector(".photograper_media");
+        const mediaModel =  mediaTemplate(medias[i], photographer);
+        //console.log("PHOTOGRAPH => ",photographer)
+        const MediaCardDOM = mediaModel.getMediaCardDOM();
+        //console.log(mediaSection)
+        mediaSection.appendChild(MediaCardDOM);
+      }
+      
   }
  
   
@@ -49,9 +56,11 @@ async function getPhotographers() {
     photographers = await getPhotographers();
     var parameter = location.search.split('=');
     //console.log((parameter[1]))
-    let singlePhotographer = await getPhotographersByid((parameter[1]));
+    let getSinglePhotographer = await getPhotographersByid((parameter[1]));
+    let singlePhotographer = getSinglePhotographer[0];
+    let singlePhotographermedia = getSinglePhotographer[1];
     console.log(singlePhotographer);
-    displayData(singlePhotographer);
+    displayData(singlePhotographer, singlePhotographermedia); //undefined document non found
   }
   
   init();

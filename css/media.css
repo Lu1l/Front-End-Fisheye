@@ -1,0 +1,25 @@
+container{
+    width: 1440px;
+}
+.containter{
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.card{
+    flex-direction: row;
+ }
+ 
+.name{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.display{
+    display:flex;
+    gap:30px
+    
+}
