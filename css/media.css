@@ -1,9 +1,5 @@
-container{
-    width: 1440px;
-}
-.containter{
-   display: flex;
-   flex-wrap: wrap;
+.photograper_media{
+    display: flex;
 }
 
 .card{
@@ -13,13 +9,23 @@ container{
 .name{
     display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .display{
     display:flex;
-    gap:30px
-    
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.media-img{
+    display:flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.set{
+    width: 350px;
+    height: 351px;
 }
