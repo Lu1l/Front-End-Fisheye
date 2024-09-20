@@ -160,8 +160,20 @@ form input {
   .media-card_cover img,
   .media-card_cover video {
     min-width: 350px;
-    height: 300px;
-    object-fit: cover;
+    height: 351px;
+    object-fit: contain;
+  }
+
+  .vid
+    {
+      width: 350px;
+      height: 351px;
+      object-fit: cover; /* Assure que la vidéo s'adapte tout en gardant les proportions */
+      border: 2px solid #ccc; /* Optionnel : ajout d'une bordure */
+      border-radius: 5px; /* Optionnel : arrondir les coins de la vidéo */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optionnel : ajouter une ombre pour un effet visuel */
+      display: block;
+      margin: 0 auto; /* Centrer la vidéo */
   }
   .media-card_cover::before {
     position: absolute;

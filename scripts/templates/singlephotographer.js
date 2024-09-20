@@ -1,5 +1,5 @@
 function singlephotographerTemplate(data) {
-    const { name, portrait, country , city,tagline } = data;
+    const { name, portrait, country , city,tagline ,price,likes} = data;
     console.log(data)
     const picture = `assets/photographers/${portrait}`;
 
@@ -31,6 +31,15 @@ function singlephotographerTemplate(data) {
         articles.appendChild(profile);
         articles.appendChild(button);
         articles.appendChild(img);
+        const div = document.createElement('div');
+        div.classList.add('fixed-div');
+        const pricePerDay = document.createElement('p');
+        pricePerDay.textContent = price+"€/Jour";
+        const likes = document.createElement('p');
+        likes.textContent = "Likes : 120";
+        div.appendChild(pricePerDay);
+        div.appendChild(likes);
+        document.body.appendChild(div);
         return (articles);
     }
 

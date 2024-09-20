@@ -1,5 +1,9 @@
 .photograper_media{
     display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-wrap: wrap;
 }
 
 .card{
@@ -29,3 +33,22 @@
     width: 350px;
     height: 351px;
 }
+
+.fixed-div {
+    position: fixed;
+    bottom: 0; /* Collée en bas */
+    right: 0;  /* Collée à droite */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px 0 0 0; /* Arrondir seulement le coin supérieur gauche */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  /* Style pour le texte à l'intérieur */
+  .fixed-div p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+  }
