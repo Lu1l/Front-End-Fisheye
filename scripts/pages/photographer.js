@@ -60,12 +60,12 @@ async function getPhotographers() {
     let singlePhotographer = getSinglePhotographer[0];
     let singlePhotographermedia = getSinglePhotographer[1];
     console.log(singlePhotographer);
-    createLightbox();
+    /*createLightbox();
 
     const closeBtn = document.querySelector('#lightbox .close');
     closeBtn.addEventListener('click', () => {
         document.getElementById('lightbox').style.display = 'none';
-    });
+    });*/
     displayData(singlePhotographer, singlePhotographermedia); //undefined document non found
   }
   
