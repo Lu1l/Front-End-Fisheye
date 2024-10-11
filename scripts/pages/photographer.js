@@ -19,10 +19,10 @@ async function getPhotographers() {
     //console.log(photographers); // Toutes les infos des photographes
     const UnSeulPhotographe = photographers.photographers.find(photographer => photographer.id == ident); //filter, map ou find
     
-    console.log(UnSeulPhotographe);
+    
     const UnSeulPhotographeMedias = photographers.media.filter(media => media.photographerId == ident); 
-    console.log(UnSeulPhotographeMedias)
-    console.log(UnSeulPhotographe)
+   
+  
     //return UnSeulPhotographe;
     return [UnSeulPhotographe, UnSeulPhotographeMedias]
     /*= return {UnSeulPhotographe, UnSeulPhotographeMedias} Objet*/
@@ -59,7 +59,7 @@ async function getPhotographers() {
     let getSinglePhotographer = await getPhotographersByid((parameter[1]));
     let singlePhotographer = getSinglePhotographer[0];
     let singlePhotographermedia = getSinglePhotographer[1];
-    console.log(singlePhotographer);
+
     /*createLightbox();
 
     const closeBtn = document.querySelector('#lightbox .close');

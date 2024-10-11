@@ -10,6 +10,7 @@ main {
       align-items: center;
       height: 100vh;
       flex-wrap: wrap;
+      padding: 20px;
 }
 
 .card{
@@ -44,12 +45,14 @@ main {
     position: fixed;
     bottom: 0; /* Collée en bas */
     right: 0;  /* Collée à droite */
-    background-color: #f0f0f0;
+    background-color: #DB8876;
     border: 1px solid #ccc;
     padding: 15px;
-    border-radius: 10px 0 0 0; /* Arrondir seulement le coin supérieur gauche */
+    border-radius: 5px 0 0 0; /* Arrondir seulement le coin supérieur gauche */
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    width: 376px;
+    height: 40px;
+    color:#DB8876;
   }
 
   /* Style pour le texte à l'intérieur */
@@ -58,50 +61,111 @@ main {
     font-size: 16px;
     color: #333;
   }
-  .fa-solid {
-    color: red;
-  }
+  
 
-  .fa-heart {
-    color:red;
-  }
- 
   .modal {
     display: none;
-    position: fixed;
+    position:fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
-}
-.modal-content {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: rgba(255, 253, 253, 0.9);
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 100%;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-.modal-image {
-    max-width: 90%;
-    max-height: 90%;
-}
-.close, .prev, .next {
-    color: red;
-    font-size: 35px;
-    font-weight: bold;
-    position: absolute;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  #modalImage {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+  
+  .modal-title{
+    margin-top: 10px;
+    margin-bottom:10px;
+  }
+  .close {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 30px;
     cursor: pointer;
-}
-.close {
-    top: 15px;
-    right: 35px;
-}
-.prev {
-    left: 15px;
+  }
+  
+  .prev, .next {
+    position: fixed;
     top: 50%;
-}
-.next {
-    right: 15px;
-    top: 50%;
-}
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 16px;
+  }
+  
+  .prev {
+    left: 20px;
+  }
+  
+  .next {
+    right: 20px;
+  }
+  
+  .fa-heart {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .fa-heart.liked {
+    color: red;
+  }
+  .far{
+    border-radius: white;
+  }
+  
+  .like-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .like-count {
+    margin-right: 5px;
+  }
+
+  #gallery{
+    display: none;
+  }
+
+  .total-likes-container {
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .total-likes-container i {
+    font-size: 18px;
+  }

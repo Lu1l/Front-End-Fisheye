@@ -1,6 +1,6 @@
 function singlephotographerTemplate(data) {
     const { name, portrait, country , city,tagline ,price,likes} = data;
-    console.log(data)
+   
     const picture = `assets/photographers/${portrait}`;
 
     function getSingleUserCardDOM() {

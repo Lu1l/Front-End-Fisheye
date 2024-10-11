@@ -4,7 +4,6 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
     margin: 0 100px;
 }
 
@@ -20,6 +19,20 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: -50px;
+}
+
+.menu {
+  margin-left: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 130px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+
 }
 
 .modal {
