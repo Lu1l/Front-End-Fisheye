@@ -169,3 +169,30 @@ main {
   .total-likes-container i {
     font-size: 18px;
   }
+
+  .sort-container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sort-container label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  #sort-select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #901C1C;
+    font-size: 16px;
+    background-color: #901C1C;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #sort-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #DB8876;
+  }

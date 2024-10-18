@@ -64,7 +64,7 @@ function sortMedia(mediaArray) {
 
 function sortAndDisplayMedia() {
   const sortedMedia = sortMedia(mediaData);
-  createGallery(sortedMedia, { name: [fullname] });
+  createGallery(sortedMedia, { name: fullname.join(' ') });
 }
 
 function mediaTemplate(data, photographerName) {
