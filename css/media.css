@@ -5,13 +5,14 @@ main {
 
 }
 .photograper_media{
-    display: flex;
+    display: none;
       justify-content: center;
       align-items: center;
       height: 100vh;
       flex-wrap: wrap;
       padding: 20px;
 }
+
 
 .card{
     flex-direction: row;
@@ -149,7 +150,12 @@ main {
   }
 
   #gallery{
-    display:block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-wrap: wrap;
+      padding: 20px;
   }
 
   .total-likes-container {

@@ -63,7 +63,9 @@ function sortMedia(mediaArray) {
 
 function sortAndDisplayMedia() {
   const sortedMedia = sortMedia(mediaData);
-  createGallery(sortedMedia, { name: fullname.join(' ') });
+  console.log('Fullname',fullname)
+  createGallery(sortedMedia, fullname.join(' '));
+
 }
 
 function mediaTemplate(data, photographerName) {
@@ -225,12 +227,14 @@ async function loadData() {
 }
 
 function createGallery(media, photographerName) {
+  console.log('Nom du photographe:',photographerName)
   const galleryContainer = document.getElementById("gallery");
   galleryContainer.innerHTML = '';
   
   media.forEach((item) => {
     const mediaCard = mediaTemplate(item, { name: photographerName });
     galleryContainer.appendChild(mediaCard.getMediaCardDOM());
+    
   });
 }
 
