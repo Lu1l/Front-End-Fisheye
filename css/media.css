@@ -149,11 +149,11 @@ main {
   }
 
   #gallery{
-    display: none;
+    display:block;
   }
 
   .total-likes-container {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 36px;
     background-color: #DB8876;

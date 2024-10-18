@@ -2,7 +2,6 @@ let mediaData = [];
 let currentIndex = 0;
 let likedMedia = new Set();
 let fullname = [];
-let total;
 let currentSortMethod = 'title';
 
 function getPhotographerId() {
@@ -53,7 +52,7 @@ function sortMedia(mediaArray) {
       case 'title':
         return a.title.localeCompare(b.title, 'fr', {sensitivity: 'base'});
       case 'date':
-        return new Date(a.date) - new Date(b.date);
+        return new Date(b.date) - new Date(a.date);
       case 'likes':
         return b.likes - a.likes;
       default:
@@ -64,7 +63,7 @@ function sortMedia(mediaArray) {
 
 function sortAndDisplayMedia() {
   const sortedMedia = sortMedia(mediaData);
-  createGallery(sortedMedia, { name: [fullname] });
+  createGallery(sortedMedia, { name: fullname.join(' ') });
 }
 
 function mediaTemplate(data, photographerName) {
@@ -239,8 +238,6 @@ async function init() {
   const photographerId = getPhotographerId();
   const data = await loadData();
   
-  
-
   if (data && photographerId) {
     const photographer = data.photographers.find(p => p.id === photographerId);
     if (!photographer) {
@@ -250,8 +247,6 @@ async function init() {
     
     const photographerName = photographer.name;
     mediaData = data.media.filter(item => item.photographerId === photographerId);
-    
-    // Ajout du menu déroulant
     
     const gallerySection = document.getElementById('gallery').parentElement;
     const sortDropdown = createSortDropdown();
