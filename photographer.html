@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -16,54 +16,49 @@
   </head>
   <body>
     <header>
-     <a href="index.html"> <img src="assets/images/logo.png" class="logo" /></a> 
+     <a href="index.html" aria-label="Retour à la page d'accueil"> 
+       <img src="assets/images/logo.png" class="logo" alt="Fisheye Logo" />
+     </a> 
     </header>
     <main id="main">
-      <section>
-
+      <section aria-label="Informations du photographe">
         <div class="photograph-header">
           <div class="container">
           </div>
         </div>
       </section>
      
-      <section>
-        
-
+      <section aria-label="Galerie du photographe">
       </section>
-    
-<section>
-  <div id="gallery"></div>
-  <div class="photograper_media">
-    
-    </div>
-    <div id="modal" class="modal">
-      <span class="close">&times;</span>
-      <div class="prev">&#10094;</div>
-      <div class="next">&#10095;</div>
-      <div id="modalContent" class="modal-content">
-      </div>
-    </div>
-    
-
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    </div>
-
-</section>
       
+      <section aria-label="Galerie et médias du photographe">
+        <div id="gallery"></div>
+        <div class="photograper_media">
+        </div>
+        <div id="modal" class="modal" aria-label="Visionneuse d'images">
+          <span class="close" aria-label="Fermer la visionneuse">&times;</span>
+          <div class="prev" aria-label="Image précédente">&#10094;</div>
+          <div class="next" aria-label="Image suivante">&#10095;</div>
+          <div id="modalContent" class="modal-content">
+          </div>
+        </div>
+    
+        <div id="contact_modal">
+          <div class="modal">
+            <header>
+              <h2>Contactez-moi</h2>
+              <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer" aria-label="Fermer le formulaire de contact" />
+            </header>
+            <form aria-label="Formulaire de contact">
+              <div>
+                <label for="prenom">Prénom</label>
+                <input id="prenom" type="text" aria-label="Votre prénom" />
+              </div>
+              <button class="contact_button" aria-label="Envoyer le message">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
     
     <script src="/scripts/templates/singlephotographer.js"></script>
