@@ -1,48 +1,56 @@
 function photographerTemplate(data) {
-    const { name, portrait, price, country , city,tagline,id } = data;
-
+    const { name, portrait, price, country, city, tagline, id } = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        
-        const article = document.createElement( 'article' );
+        const article = document.createElement('article');
+        article.setAttribute("aria-label", `Carte du photographe ${name}`);
+        article.setAttribute("tabindex", "0");
         article.addEventListener('click', function() { 
-            //alert('Erreur');
-            RedirectionJavascript();
-          }, false);
-        const img = document.createElement( 'img' );
+            redirectToPhotographerPage(id);
+        }, false);
+        
+      
+        article.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                redirectToPhotographerPage(id);
+            }
+        }, false);
+
+        const img = document.createElement('img');
         img.setAttribute("src", picture);
-        const h2 = document.createElement( 'h2' );
-        const h3 = document.createElement( 'h3' );
-        const pgTagline = document.createElement( 'p' );   
-        const pgPrice = document.createElement( 'p' ); 
+        img.setAttribute("alt", `Portrait de ${name}`);
+
+        const h2 = document.createElement('h2');
         h2.textContent = name;
-        pgTagline.textContent = tagline;
-        pgPrice.textContent = price+" €"+"/jour";
-        pgPrice.classList.add("price");
-        h3.textContent = country+", "+city;
+        h2.setAttribute("aria-label", `Nom du photographe: ${name}`);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = `${country}, ${city}`;
+        h3.setAttribute("aria-label", `Localisation: ${country}, ${city}`);
         h3.classList.add("countryCity");
 
-        article.classList.add("tabclas");
-        console.log(article.ariaSelected); // true
-        // article.setAttribute("aria-quelquechose", "nanani")
-        article.ariaSelected = "true";
-        console.log(article.ariaSelected); // false
+        const pgTagline = document.createElement('p');   
+        pgTagline.textContent = tagline;
+        pgTagline.setAttribute("aria-label", `Slogan: ${tagline}`);
+
+        const pgPrice = document.createElement('p'); 
+        pgPrice.textContent = `${price} €/jour`;
+        pgPrice.setAttribute("aria-label", `Tarif: ${price} euros par jour`);
+        pgPrice.classList.add("price");
 
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(pgTagline);
         article.appendChild(pgPrice);
-        return (article);
 
-        function RedirectionJavascript(){
-
-            document.location.href= "photographer.html?id="+id;
-            
-            }
+        return article;
     }
-    return {getUserCardDOM}
 
+    function redirectToPhotographerPage(photographerId) {
+        document.location.href = `photographer.html?id=${photographerId}`;
+    }
 
+    return { getUserCardDOM };
 }

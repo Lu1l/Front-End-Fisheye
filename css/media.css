@@ -14,6 +14,7 @@ main {
 }
 
 
+
 .card{
     flex-direction: row;
  }
@@ -126,17 +127,16 @@ main {
   .next {
     right: 20px;
   }
-  
   .fa-heart {
     cursor: pointer;
     transition: all 0.3s ease;
+    color: transparent;
+    -webkit-text-stroke: 2px #DB8876; /* Ajoute une bordure noire */
   }
   
   .fa-heart.liked {
-    color: red;
-  }
-  .far{
-    border-radius: white;
+    color: #DB8876;
+    -webkit-text-stroke: 2px #DB8876; /* Bordure rouge quand le cœur est aimé */
   }
   
   .like-container {
