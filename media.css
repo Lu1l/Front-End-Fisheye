@@ -1,0 +1,11 @@
+.fa-heart {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: transparent;
+  -webkit-text-stroke: 2px #000; /* Ajoute une bordure noire */
+}
+
+.fa-heart.liked {
+  color: red;
+  -webkit-text-stroke: 2px red; /* Bordure rouge quand le cœur est aimé */
+}

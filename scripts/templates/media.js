@@ -176,7 +176,7 @@ function updateTotalLikes() {
     likeIcon.classList.add('fa', 'fa-heart');
     
     totalLikesElement.innerHTML = ''; 
-    totalLikesElement.textContent = total + ' '; 
+    totalLikesElement.textContent = `Likes : ${total} `;
     totalLikesElement.appendChild(likeIcon);
   }
 }
@@ -274,18 +274,25 @@ async function init() {
     const sortDropdown = createSortDropdown();
     gallerySection.insertBefore(sortDropdown, document.getElementById('gallery'));
     
-    let totalLikesContainer = document.getElementById('totalLikesContainer');
-    if (!totalLikesContainer) {
-      totalLikesContainer = document.createElement('div');
-      totalLikesContainer.id = 'totalLikesContainer';
-      totalLikesContainer.classList.add('total-likes-container');
-      
-      const totalLikesElement = document.createElement('span');
-      totalLikesElement.id = 'totalLikes';
-      totalLikesContainer.appendChild(totalLikesElement);
-      
-      document.querySelector('main').appendChild(totalLikesContainer);
-    }
+    const priceAndLikesContainer = document.createElement('div');
+    priceAndLikesContainer.classList.add('fixed-div');
+    priceAndLikesContainer.setAttribute('aria-label', 'Informations du photographe');
+    
+    const priceElement = document.createElement('span');
+    priceElement.textContent = `${photographer.price}€ / jour`;
+    priceElement.classList.add('photographer-price');
+    
+    let totalLikesContainer = document.createElement('div');
+    totalLikesContainer.id = 'totalLikesContainer';
+    totalLikesContainer.classList.add('total-likes-container');
+    
+    const totalLikesElement = document.createElement('span');
+    totalLikesElement.id = 'totalLikes';
+    totalLikesContainer.appendChild(totalLikesElement);
+    
+    priceAndLikesContainer.appendChild(priceElement);
+    priceAndLikesContainer.appendChild(totalLikesElement);
+    document.querySelector('main').appendChild(priceAndLikesContainer);
     
     console.log('sort diplay media init:')
     sortAndDisplayMedia();

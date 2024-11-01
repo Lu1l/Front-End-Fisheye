@@ -112,6 +112,7 @@ form input {
   
   .photographer_cover {
     position: relative;
+    object-fit: cover;
     height: 200px;
     width: 200px;
     overflow: hidden;

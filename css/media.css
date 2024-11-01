@@ -39,11 +39,14 @@ main {
 }
 
 .set{
+  object-fit: cover;
     width: 350px;
     height: 351px;
 }
 
 .fixed-div {
+  display: flex;
+  flex-direction: column;
     position: fixed;
     bottom: 0; /* Collée en bas */
     right: 0;  /* Collée à droite */
@@ -54,7 +57,7 @@ main {
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
     width: 376px;
     height: 40px;
-    color:#DB8876;
+    color:black;
   }
 
   /* Style pour le texte à l'intérieur */

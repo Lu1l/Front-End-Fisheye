@@ -53,7 +53,7 @@ function singlephotographerTemplate(data) {
         articles.appendChild(img);
 
         const div = document.createElement('div');
-        div.classList.add('fixed-div');
+        div.classList.add('f');
         div.setAttribute("aria-label", "Informations du photographe");
         div.setAttribute("tabindex", "0");
 
@@ -68,8 +68,8 @@ function singlephotographerTemplate(data) {
         likesElement.setAttribute("tabindex", "0");
         likesElement.setAttribute("aria-label", `Nombre total de likes: ${globalLikes}`);
 
-        div.appendChild(pricePerDay);
-        div.appendChild(likesElement);
+       
+      
         document.body.appendChild(div);
 
         return (articles);
