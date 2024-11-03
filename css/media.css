@@ -13,6 +13,14 @@ main {
       padding: 20px;
 }
 
+.title{
+    margin-bottom: 30px;
+}
+.location{
+    color: #901C1C;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
 
 
 .card{
@@ -45,19 +53,23 @@ main {
 }
 
 .fixed-div {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
     position: fixed;
     bottom: 0; /* Collée en bas */
     right: 0;  /* Collée à droite */
     background-color: #DB8876;
-    border: 1px solid #ccc;
     padding: 15px;
-    border-radius: 5px 0 0 0; /* Arrondir seulement le coin supérieur gauche */
+    border-radius: 5px 5px 0 0; /* Arrondir seulement le coin supérieur gauche */
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
     width: 376px;
     height: 40px;
     color:black;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: space-around;
+    margin-right: 40px;
   }
 
   /* Style pour le texte à l'intérieur */
@@ -103,6 +115,8 @@ main {
   .modal-title{
     margin-top: 10px;
     margin-bottom:10px;
+    color: #901C1C;
+    font-weight: bold;
   }
   .close {
     position: fixed;
@@ -111,6 +125,11 @@ main {
     color: white;
     font-size: 30px;
     cursor: pointer;
+    color: #901C1C;
+  }
+
+  .close_modal{
+    display: block;
   }
   
   .prev, .next {
@@ -121,10 +140,12 @@ main {
     font-size: 30px;
     cursor: pointer;
     padding: 16px;
+    color: #901C1C;
   }
   
   .prev {
     left: 20px;
+    color: #901C1C;
   }
   
   .next {
@@ -134,12 +155,19 @@ main {
     cursor: pointer;
     transition: all 0.3s ease;
     color: transparent;
-    -webkit-text-stroke: 2px #DB8876; /* Ajoute une bordure noire */
+    -webkit-text-stroke: 2px  #901C1C;
+    ; /* Ajoute une bordure noire */
+  }
+
+  .far-solid{ 
+  color:black
   }
   
+
+  
   .fa-heart.liked {
-    color: #DB8876;
-    -webkit-text-stroke: 2px #DB8876; /* Bordure rouge quand le cœur est aimé */
+    color: #901C1C;
+    -webkit-text-stroke: 2px #901C1C; /* Bordure rouge quand le cœur est aimé */
   }
   
   .like-container {
@@ -183,6 +211,7 @@ main {
     margin: 20px 0;
     display: flex;
     align-items: center;
+    margin-left: 7em;
   }
   
   .sort-container label {
@@ -192,7 +221,7 @@ main {
   }
   
   #sort-select {
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 5px;
     border: 1px solid #901C1C;
     font-size: 16px;

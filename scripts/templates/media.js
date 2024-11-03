@@ -2,59 +2,59 @@ let mediaData = [];
 let currentIndex = 0;
 let likedMedia = new Set();
 let photographerName = null;
-let currentSortMethod = 'title';
+let currentSortMethod = "title";
 
 function getPhotographerId() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  return parseInt(urlParams.get('id'));
+  return parseInt(urlParams.get("id"));
 }
 
 function createSortDropdown() {
-  const sortContainer = document.createElement('div');
-  sortContainer.classList.add('sort-container');
-  
-  const label = document.createElement('label');
-  label.textContent = 'Trier par : ';
-  label.setAttribute('for', 'sort-select');
-  
-  const select = document.createElement('select');
-  select.id = 'sort-select';
-  select.setAttribute('aria-label', 'Trier les médias par');
-  select.setAttribute('tabindex', '0');
-  
+  const sortContainer = document.createElement("div");
+  sortContainer.classList.add("sort-container");
+
+  const label = document.createElement("label");
+  label.textContent = "Trier par : ";
+  label.setAttribute("for", "sort-select");
+
+  const select = document.createElement("select");
+  select.id = "sort-select";
+  select.setAttribute("aria-label", "Trier les médias par");
+  select.setAttribute("tabindex", "0");
+
   const options = [
-    { value: 'title', text: 'Titre' },
-    { value: 'date', text: 'Date' },
-    { value: 'likes', text: 'Popularité' }
+    { value: "title", text: "Titre" },
+    { value: "date", text: "Date" },
+    { value: "likes", text: "Popularité" },
   ];
-  
-  options.forEach(option => {
-    const optionElement = document.createElement('option');
+
+  options.forEach((option) => {
+    const optionElement = document.createElement("option");
     optionElement.value = option.value;
     optionElement.textContent = option.text;
     select.appendChild(optionElement);
   });
-  
-  select.addEventListener('change', (e) => {
+
+  select.addEventListener("change", (e) => {
     currentSortMethod = e.target.value;
     sortAndDisplayMedia();
   });
-  
+
   sortContainer.appendChild(label);
   sortContainer.appendChild(select);
-  
+
   return sortContainer;
 }
 
 function sortMedia(mediaArray) {
   return [...mediaArray].sort((a, b) => {
     switch (currentSortMethod) {
-      case 'title':
-        return a.title.localeCompare(b.title, 'fr', {sensitivity: 'base'});
-      case 'date':
+      case "title":
+        return a.title.localeCompare(b.title, "fr", { sensitivity: "base" });
+      case "date":
         return new Date(b.date) - new Date(a.date);
-      case 'likes':
+      case "likes":
         return b.likes - a.likes;
       default:
         return 0;
@@ -79,7 +79,7 @@ function mediaTemplate(data) {
       const ctr_video = document.createElement("video");
       ctr_video.controls = true;
       ctr_video.classList.add("vid");
-      ctr_video.setAttribute('tabindex', '0');
+      ctr_video.setAttribute("tabindex", "0");
       const src = `assets/photographers/${photographerName}/${video}`;
       const media_video = document.createElement("source");
       media_video.setAttribute("src", src);
@@ -90,12 +90,12 @@ function mediaTemplate(data) {
 
     if (image) {
       const src = `assets/photographers/${photographerName}/${image}`;
-      console.log(src);
+
       const img = document.createElement("img");
       img.classList.add("set");
       img.setAttribute("src", src);
       img.setAttribute("alt", title);
-      img.setAttribute('tabindex', '0');
+      img.setAttribute("tabindex", "0");
       article.appendChild(img);
       mediaElement = img;
     }
@@ -103,6 +103,7 @@ function mediaTemplate(data) {
     const title_like = document.createElement("div");
     title_like.classList.add("title-like");
     const p = document.createElement("p");
+    p.classList.add("title-color");
     p.textContent = title;
 
     const likeContainer = document.createElement("div");
@@ -111,11 +112,11 @@ function mediaTemplate(data) {
     likeCount.textContent = likes;
     likeCount.classList.add("like-count");
 
-    const heart = document.createElement("i");
+    const heart = document.createElement("span");
     heart.classList.add("fa", "fa-heart");
-    heart.setAttribute('tabindex', '0');
-    heart.setAttribute('role', 'button');
-    heart.setAttribute('aria-label', 'Aimer ce média');
+    heart.setAttribute("tabindex", "0");
+    heart.setAttribute("role", "button");
+    heart.setAttribute("aria-label", "Aimer ce média");
     if (likedMedia.has(id)) {
       heart.classList.add("liked");
     }
@@ -165,17 +166,16 @@ function mediaTemplate(data) {
 }
 
 function updateTotalLikes() {
-  const totalLikesElement = document.getElementById('totalLikes');
+  const totalLikesElement = document.getElementById("totalLikes");
   if (totalLikesElement) {
     let total = 0;
-    mediaData.forEach(media => {
+    mediaData.forEach((media) => {
       total += likedMedia.has(media.id) ? media.likes + 1 : media.likes;
     });
-    
-    const likeIcon = document.createElement('i');
-    likeIcon.classList.add('fa', 'fa-heart');
-    
-    totalLikesElement.innerHTML = ''; 
+
+    const likeIcon = document.createElement("span");
+    likeIcon.classList.add("fa", "fa-heart");
+    totalLikesElement.innerHTML = "";
     totalLikesElement.textContent = `Likes : ${total} `;
     totalLikesElement.appendChild(likeIcon);
   }
@@ -205,8 +205,8 @@ function nextImage() {
 
 function updateModalContent() {
   const modalContainer = document.getElementById("modalContent");
-  modalContainer.innerHTML = '';
-  
+  modalContainer.innerHTML = "";
+
   const currentMedia = mediaData[currentIndex];
   const { image, video, title } = currentMedia;
 
@@ -215,22 +215,22 @@ function updateModalContent() {
     mediaElement = document.createElement("img");
     mediaElement.src = `assets/photographers/${photographerName}/${image}`;
     mediaElement.alt = title;
-    mediaElement.setAttribute('tabindex', '0');
+    mediaElement.setAttribute("tabindex", "0");
   } else if (video) {
     mediaElement = document.createElement("video");
     mediaElement.controls = true;
-    mediaElement.setAttribute('tabindex', '0');
+    mediaElement.setAttribute("tabindex", "0");
     const source = document.createElement("source");
     source.src = `assets/photographers/${photographerName}/${video}`;
     mediaElement.appendChild(source);
   }
-  
+
   mediaElement.id = "modalImage";
-  
+
   const titleElement = document.createElement("p");
   titleElement.classList.add("modal-title");
   titleElement.textContent = title;
-  
+
   modalContainer.appendChild(mediaElement);
   modalContainer.appendChild(titleElement);
 }
@@ -247,54 +247,62 @@ async function loadData() {
 
 async function createGallery(media) {
   const galleryContainer = document.getElementById("gallery");
-  galleryContainer.innerHTML = '';
-  
+  galleryContainer.innerHTML = "";
+
   media.forEach((item) => {
     const mediaCard = mediaTemplate(item);
     galleryContainer.appendChild(mediaCard.getMediaCardDOM());
-    
   });
 }
 
 async function init() {
   const photographerId = getPhotographerId();
   const data = await loadData();
-  
+
   if (data && photographerId) {
-    const photographer = data.photographers.find(p => p.id === photographerId);
+    const photographer = data.photographers.find(
+      (p) => p.id === photographerId
+    );
     if (!photographer) {
       console.error("Photographe non trouvé");
       return;
     }
-    
-    photographerName = photographer.name.split(' ')[0];
-    mediaData = data.media.filter(item => item.photographerId === photographerId);
-    
-    const gallerySection = document.getElementById('gallery').parentElement;
+
+    photographerName = photographer.name.split(" ")[0];
+    mediaData = data.media.filter(
+      (item) => item.photographerId === photographerId
+    );
+
+    const gallerySection = document.getElementById("gallery").parentElement;
     const sortDropdown = createSortDropdown();
-    gallerySection.insertBefore(sortDropdown, document.getElementById('gallery'));
-    
-    const priceAndLikesContainer = document.createElement('div');
-    priceAndLikesContainer.classList.add('fixed-div');
-    priceAndLikesContainer.setAttribute('aria-label', 'Informations du photographe');
-    
-    const priceElement = document.createElement('span');
+    gallerySection.insertBefore(
+      sortDropdown,
+      document.getElementById("gallery")
+    );
+
+    const priceAndLikesContainer = document.createElement("div");
+    priceAndLikesContainer.classList.add("fixed-div");
+    priceAndLikesContainer.setAttribute(
+      "aria-label",
+      "Informations du photographe"
+    );
+
+    const priceElement = document.createElement("span");
     priceElement.textContent = `${photographer.price}€ / jour`;
-    priceElement.classList.add('photographer-price');
-    
-    let totalLikesContainer = document.createElement('div');
-    totalLikesContainer.id = 'totalLikesContainer';
-    totalLikesContainer.classList.add('total-likes-container');
-    
-    const totalLikesElement = document.createElement('span');
-    totalLikesElement.id = 'totalLikes';
+    priceElement.classList.add("photographer-price");
+
+    let totalLikesContainer = document.createElement("div");
+    totalLikesContainer.id = "totalLikesContainer";
+    totalLikesContainer.classList.add("total-likes-container");
+
+    const totalLikesElement = document.createElement("span");
+    totalLikesElement.id = "totalLikes";
     totalLikesContainer.appendChild(totalLikesElement);
-    
+
     priceAndLikesContainer.appendChild(priceElement);
     priceAndLikesContainer.appendChild(totalLikesElement);
-    document.querySelector('main').appendChild(priceAndLikesContainer);
-    
-    console.log('sort diplay media init:')
+    document.querySelector("main").appendChild(priceAndLikesContainer);
+
     sortAndDisplayMedia();
     updateTotalLikes();
 
@@ -335,7 +343,7 @@ async function init() {
 
     document.addEventListener("keydown", (e) => {
       if (modal.style.display === "block") {
-        switch(e.key) {
+        switch (e.key) {
           case "Escape":
           case "e":
             closeModal2();
@@ -350,9 +358,9 @@ async function init() {
       }
     });
 
-    closeBtn.setAttribute('tabindex', '0');
-    prevBtn.setAttribute('tabindex', '0');
-    nextBtn.setAttribute('tabindex', '0');
+    closeBtn.setAttribute("tabindex", "0");
+    prevBtn.setAttribute("tabindex", "0");
+    nextBtn.setAttribute("tabindex", "0");
   }
 }
 
